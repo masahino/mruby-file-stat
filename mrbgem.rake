@@ -14,7 +14,7 @@ MRuby::Gem::Specification.new('mruby-file-stat') do |spec|
   file config do
     FileUtils.mkdir_p build_dir, :verbose => true
     Dir.chdir build_dir do
-      if ENV['OS'] == 'Windows_NT'
+      if ENV['OS'] == 'Windows_NT' or build.kind_of?(MRuby::CrossBuild)
         _pp 'on Windows', dir
         FileUtils.touch "#{build_dir}/config.h", :verbose => true
       else
